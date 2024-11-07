@@ -1,0 +1,18 @@
+{
+   "mqtt": {
+      "brokerURL": "test.mosquitto.org",
+      "brokerPort": "3453",
+      "topicName": "teez"
+   },
+   "cellAddress": {
+      "cellMinAddress": 2,
+      "cellMaxAddress": 17,
+      "rackMinAddress": 100,
+      "rackMaxAddress": 300,
+      "floorMinAddress": 1,
+      "floorMaxAddress": 1,
+      "warehousesValidLetters": "GF",
+      "goodsTypeValidLetters": "FR",
+      "rackExcludeAddresses": [201, 187, 13, 54, 45, 45, 167, 187]
+   }
+}

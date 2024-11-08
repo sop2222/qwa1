@@ -25,7 +25,6 @@ private slots:
 private:
     Ui::AwhPicture *ui;
     QImage *rackImage;
-    QWidget *deckWidget;
     QGraphicsScene *scene;
     QPixmap *rackBackgroundPixmap;
 };

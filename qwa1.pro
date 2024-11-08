@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     aconfigjsoninlocalfile.cpp \
     awhpicture.cpp \
+    celladdressscreening.cpp \
     main.cpp \
     awindow.cpp
 
@@ -25,6 +26,7 @@ HEADERS += \
     aconfigjsoninlocalfile.h \
     awhpicture.h \
     awindow.h \
+    celladdressscreening.h \
     dataStructure.h
 
 FORMS += \

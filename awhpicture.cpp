@@ -28,12 +28,16 @@ AwhPicture::AwhPicture(QWidget *parent) :
     ui(new Ui::AwhPicture)
 {
     ui->setupUi(this);
+    rackImage = nullptr;
+    scene = nullptr;
+    rackBackgroundPixmap = nullptr;
+
 }
 
 AwhPicture::~AwhPicture()
 {
-    delete ui;
     delete scene;
+    delete ui;
 }
 
 void AwhPicture::loadBackgroungImage(QGraphicsScene *scene)

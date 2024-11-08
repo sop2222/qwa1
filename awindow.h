@@ -2,6 +2,7 @@
 #define AWINDOW_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 #include <QtMqtt/QMqttClient>
 #include "dataStructure.h"
 #include "awhpicture.h"
@@ -19,6 +20,7 @@ public:
     AWindow(QWidget *parent = nullptr);
     ~AWindow();
     QWidget* m_myWidget;  //This is used to paint rectangles and not on a MainWindows, but elsewhwere
+    AConfigJsonInLocalFile *j_config; // A not so nessesary class of my own to read config file
 
 private slots:
     void on_DoItButton_clicked();
@@ -37,9 +39,9 @@ private slots:
     void on_LogEdit_textChanged();
 
     void showEvent(QShowEvent *event);
+    void closeEvent (QCloseEvent *event);
 
 private:
-    AConfigJsonInLocalFile *j_config; // A not so nessesary class of my own to read config file
     QMqttClient *m_client;  //An instance of qtmqtt libruary thing to connect to MQTT broker
     AwhPicture *whVisual;   //A dialog to create and show as I visualise the section of a warehouse rack
     Ui::AWindow *ui;

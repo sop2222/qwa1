@@ -23,6 +23,7 @@ AWindow::AWindow(QWidget *parent)
     , ui(new Ui::AWindow)
 {
     ui->setupUi(this);
+
     //Create an Json config class instance for to read parameters
     j_config = new AConfigJsonInLocalFile(this);
     j_config->ReadJsonFile();
@@ -35,6 +36,7 @@ AWindow::AWindow(QWidget *parent)
 
     //Create an whVisual window that visualizes a Warehouse rack
     whVisual = new AwhPicture(this);
+    whVisual->move(50,50);
 
     //Set up a method of an AWindow class (this main window) as slot for m_client signals
     connect(m_client, &QMqttClient::stateChanged, this, &AWindow::updateLogStateChange); // When connection status changes
@@ -52,13 +54,21 @@ void AWindow::showEvent(QShowEvent *event)
         content =  " Using config: " + j_config->fileFullName + "\n";
     ui->LogEdit->insertPlainText(QDateTime::currentDateTime().time().toString() + content); //DEBUG - to log
     ui->statusbar->showMessage(content); //DEBUG - to status bar
+    event->accept();
+}
+
+void AWindow::closeEvent (QCloseEvent *event)
+{
+    QCoreApplication::quit();
+    event->accept();
 }
 
 AWindow::~AWindow()
 {
     m_client->disconnect();  // Not sure I need that
     m_client->deleteLater();
-    whVisual->deleteLater();
+    //delete m_client;
+    //delete whVisual;
     delete ui;
 }
 
@@ -253,7 +263,7 @@ int AWindow::validateJsonContent(const QJsonDocument &jsonFromMessage, LedDirect
 void AWindow::showWHpictureWindow()
 {
     whVisual->showNormal();
-    whVisual->move(whVisual->width()*3,200);
+    whVisual->move(AWindow::x() + AWindow::width() + 50, whVisual->y());
     // Circle of target color in WHpicture window
     if(whVisual->isVisible())
     {
@@ -269,7 +279,7 @@ void AWindow::on_quick2windowsButton_clicked()
     //in release do delete method and button as well
     //as the #include directive on top (QRandomGenerator)
     whVisual->showNormal();
-    whVisual->move(whVisual->width()*3,200);
+    whVisual->move(this->x() + this->width() + 50, whVisual->y());
     if(whVisual->isVisible())
     {
         fakeDirective.colorB = 100;

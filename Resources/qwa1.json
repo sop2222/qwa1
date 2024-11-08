@@ -1,7 +1,7 @@
 {
    "mqtt": {
       "brokerURL": "test.mosquitto.org",
-      "brokerPort": "3453",
+      "brokerPort": "1883",
       "topicName": "teez"
    },
    "cellAddress": {

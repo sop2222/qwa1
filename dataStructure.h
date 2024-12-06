@@ -4,7 +4,7 @@
 struct LedDirective
 {
     unsigned int colorR, colorG, colorB;
-    unsigned int illuminateState;
+    unsigned int illuminateState, fallBackState;
     char cellPrefix1, cellPrefix3;
     unsigned int cellAdressNumbers[7];
     unsigned int illuminateTime;
